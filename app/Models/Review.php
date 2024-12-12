@@ -11,6 +11,15 @@ class Review extends Model
 {
     use HasUuids, SoftDeletes;
 
+    protected $fillable = [
+        'id',
+        'tour_package_id',
+        'name',
+        'rating',
+        'review',
+        'active',
+    ];
+
     public function tourPackage(): BelongsTo
     {
         return $this->belongsTo(TourPackage::class);
