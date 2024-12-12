@@ -15,6 +15,8 @@ Route::view('profile', 'profile')
 
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
 
+    Route::view('dashboard', 'admin.dashboard')->name('dashboard');
+
     Route::resource('categories', Controller::class);
 
     Route::resource('tour-packages', Controller::class);
