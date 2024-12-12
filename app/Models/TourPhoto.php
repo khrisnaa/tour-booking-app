@@ -11,6 +11,12 @@ class TourPhoto extends Model
 {
     use HasUuids, SoftDeletes;
 
+    protected $fillable = [
+        'id',
+        'tour_package_id',
+        'photo',
+    ];
+
     public function tourPackage(): BelongsTo
     {
         return $this->belongsTo(TourPackage::class);

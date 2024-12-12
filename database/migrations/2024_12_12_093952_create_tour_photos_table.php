@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tour_photos', function (Blueprint $table) {
             $table->uuid('id')->primary()->unique();
             $table->foreignUuid('tour_package_id')->constrained()->onDelete('cascade');
-            $table->string('photo_url');
+            $table->string('photo');
             $table->softDeletes();
             $table->timestamps();
         });
