@@ -11,6 +11,13 @@ class Bank extends Model
 {
     use HasUuids, SoftDeletes;
 
+    protected $fillable = [
+        'id',
+        'bank_name',
+        'bank_account_name',
+        'bank_account_number',
+        'logo',
+    ];
     public function bookings(): HasMany
     {
         return $this->hasMany(Booking::class);
