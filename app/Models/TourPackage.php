@@ -12,6 +12,18 @@ class TourPackage extends Model
 {
     use HasUuids, SoftDeletes;
 
+    protected $fillable = [
+        'category_id',
+        'name',
+        'description',
+        'price',
+        'duration_days',
+        'duration_hours',
+        'location',
+        'thumbnail',
+        'slug',
+    ];
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
