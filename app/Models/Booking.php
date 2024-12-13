@@ -12,7 +12,6 @@ class Booking extends Model
     use HasUuids, SoftDeletes;
 
     protected $fillable = [
-        'id',
         'tour_package_id',
         'bank_id',
         'start_date',

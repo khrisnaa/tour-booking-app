@@ -12,7 +12,6 @@ class Bank extends Model
     use HasUuids, SoftDeletes;
 
     protected $fillable = [
-        'id',
         'bank_name',
         'bank_account_name',
         'bank_account_number',

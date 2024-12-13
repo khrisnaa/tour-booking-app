@@ -12,7 +12,6 @@ class Review extends Model
     use HasUuids, SoftDeletes;
 
     protected $fillable = [
-        'id',
         'tour_package_id',
         'name',
         'rating',
