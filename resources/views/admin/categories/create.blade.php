@@ -7,7 +7,7 @@
             store</p>
     </x-slot>
 
-    <!-- Card Section -->
+    <!-- Form Section -->
     <div>
         <form action="{{ route('admin.categories.store') }}" method="POST">
             @csrf
@@ -29,7 +29,7 @@
                             <x-input-label for="description" :value="__('Category description')" />
                             <textarea id="description" name="description"
                                 class="block w-full rounded-lg border-gray-200 px-3 py-2 text-sm focus:border-indigo-500 focus:ring-indigo-500 disabled:pointer-events-none disabled:opacity-50"
-                                rows="6" placeholder="Enter a brief description of the category, highlighting its key features or purpose."></textarea>
+                                rows="6" placeholder="Enter a brief description of the category, highlighting its key features or purpose.">{{ old('description') }}</textarea>
                             <x-input-error :messages="$errors->get('description')" class="mt-2" />
                         </div>
                     </div>
@@ -46,6 +46,6 @@
             <!-- End Card -->
         </form>
     </div>
-    <!-- End Card Section -->
+    <!-- End Form Section -->
 
 </x-app-layout>
