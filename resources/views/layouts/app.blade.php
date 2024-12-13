@@ -94,9 +94,10 @@
                             {{ $header }}
                         </div>
                     </header>
+
+                    {{ $slot }}
                 </div>
 
-                {{ $slot }}
             </div>
         </div>
         <!-- End Content -->

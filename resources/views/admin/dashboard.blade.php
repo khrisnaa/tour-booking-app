@@ -7,7 +7,7 @@
             central hub.</p>
     </x-slot>
 
-    <div class="mx-auto max-w-7xl space-y-4 sm:px-6 lg:px-8">
+    <div class="space-y-4">
         <!-- Grid -->
         <div class="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
             <!-- Card -->
