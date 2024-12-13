@@ -14,6 +14,7 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @stack('styles')
     </head>
 
     <body class="font-sans antialiased">
@@ -85,13 +86,23 @@
         <!-- End Sidebar -->
 
         <!-- Content -->
-        <div class="min-h-[100dvh] w-full bg-gray-100 lg:ps-64">
+        <div class="min-h-screen w-full bg-gray-100 lg:ps-64">
             <div class="space-y-4 p-4 sm:space-y-6 sm:p-6">
+                <div class="mx-auto max-w-7xl space-y-4 sm:px-6 lg:px-8">
+                    <header class="rounded-xl bg-white shadow">
+                        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+                            {{ $header }}
+                        </div>
+                    </header>
+                </div>
+
                 {{ $slot }}
             </div>
         </div>
         <!-- End Content -->
         <!-- ========== END MAIN CONTENT ========== -->
+
+        @stack('scripts')
     </body>
 
 </html>
