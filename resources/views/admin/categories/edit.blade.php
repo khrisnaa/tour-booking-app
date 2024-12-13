@@ -1,10 +1,20 @@
 <x-app-layout back="{{ route('admin.categories.index') }}">
     <x-slot name="header">
-        <h2 class="text-xl font-semibold leading-tight text-gray-800">
-            {{ __('Edit Category') }}
-        </h2>
-        <p class="text-sm text-gray-500">Update the details of the selected category to keep your product offerings
-            organized and accurate</p>
+        <div class="flex items-center justify-between">
+            <div>
+                <h2 class="text-xl font-semibold leading-tight text-gray-800">
+                    {{ __('Edit Category') }}
+                </h2>
+                <p class="text-sm text-gray-500">Update the details of the selected category to keep your product
+                    offerings
+                    organized and accurate</p>
+            </div>
+            <div>
+                <x-admin.delete-modal title="Delete Category"
+                    description="Are you sure you want to permanently delete this category? This action is irreversible."
+                    actionText="Delete Category" actionUrl="{{ route('admin.categories.destroy', $category) }}" />
+            </div>
+        </div>
     </x-slot>
 
     <!-- Form Section -->
@@ -22,7 +32,7 @@
                         <div class="space-y-2">
                             <x-input-label for="name" :value="__('Category name')" />
                             <x-text-input id="name" class="mt-1 block w-full" type="text" name="name"
-                                :value="old('name', $category->name ?? '')" autofocus autocomplete="off" placeholder="Enter category name" />
+                                :value="old('name', $category->name ?? '')" autocomplete="off" placeholder="Enter category name" />
                             <x-input-error :messages="$errors->get('name')" class="mt-2" />
                         </div>
 

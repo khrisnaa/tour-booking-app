@@ -1,5 +1,18 @@
-<div id="hs-danger-alert" class="hs-overlay size-full fixed start-0 top-0 z-[80] hidden overflow-y-auto overflow-x-hidden"
-    role="dialog" tabindex="-1" aria-labelledby="hs-danger-alert-label">
+<button type="button"
+    class="size-[46px] flex items-center justify-center rounded-lg border border-transparent bg-red-600 px-3 py-4 text-sm font-medium text-white hover:bg-red-700 focus:bg-red-700 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+    aria-haspopup="dialog" aria-expanded="false" aria-controls="hs-danger-alert" data-hs-overlay="#hs-danger-alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        class="lucide lucide-trash">
+        <path d="M3 6h18" />
+        <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+        <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+    </svg>
+</button>
+
+<div id="hs-danger-alert"
+    class="hs-overlay size-full fixed start-0 top-0 z-[80] hidden overflow-y-auto overflow-x-hidden" role="dialog"
+    tabindex="-1" aria-labelledby="hs-danger-alert-label">
     <div
         class="0 m-3 mt-0 flex min-h-[calc(100%-3.5rem)] items-center opacity-0 transition-all ease-out hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 md:mx-auto md:w-full md:max-w-2xl">
         <div class="relative my-auto flex flex-col overflow-hidden rounded-xl border bg-white shadow-sm">
