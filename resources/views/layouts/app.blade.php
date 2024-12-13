@@ -88,6 +88,10 @@
         <!-- Content -->
         <div class="min-h-screen w-full bg-gray-100 lg:ps-64">
             <div class="space-y-4 p-4 sm:space-y-6 sm:p-6">
+                @if (session('success'))
+                    <x-admin.success-alert title="{{ session('success.title') }}"
+                        description="{{ session('success.description') }}" />
+                @endif
                 <div class="mx-auto max-w-7xl space-y-4 sm:px-6 lg:px-8">
                     @if ($back)
                         <a href="{{ $back }}"

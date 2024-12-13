@@ -68,6 +68,7 @@ class CategoryController extends Controller
             $validated['slug'] = Str::slug($validated['name']);
             $category->update($validated);
         });
+
         return redirect()->route('admin.categories.index');
     }
 
@@ -76,6 +77,10 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        DB::transaction(function () use ($category) {
+            $category->delete();
+        });
+
+        return redirect()->route('admin.categories.index');
     }
 }

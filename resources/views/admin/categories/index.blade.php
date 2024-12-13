@@ -71,10 +71,10 @@
                             </thead>
 
                             <tbody class="divide-y divide-gray-200">
-                                @forelse ($categories as $category)
+                                @forelse ($categories as $index => $category)
                                     <tr>
                                         <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-600">
-                                            01</td>
+                                            {{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</td>
                                         <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
                                             {{ $category->name }}</td>
                                         <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
@@ -83,9 +83,17 @@
                                             <a href="{{ route('admin.categories.edit', $category) }}"
                                                 class="inline-flex items-center gap-x-2 rounded-lg border border-transparent text-sm font-semibold text-indigo-600 hover:text-indigo-800 focus:text-indigo-800 focus:outline-none disabled:pointer-events-none disabled:opacity-50">Edit</a>
                                             <button type="button"
-                                                class="inline-flex items-center gap-x-2 rounded-lg border border-transparent text-sm font-semibold text-red-600 hover:text-red-800 focus:text-red-800 focus:outline-none disabled:pointer-events-none disabled:opacity-50">Delete</button>
+                                                class="inline-flex items-center gap-x-2 rounded-lg border border-transparent text-sm font-semibold text-red-600 hover:text-red-800 focus:text-red-800 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                                                aria-haspopup="dialog" aria-expanded="false"
+                                                aria-controls="hs-danger-alert"
+                                                data-hs-overlay="#hs-danger-alert">Delete</button>
                                         </td>
                                     </tr>
+
+                                    <x-admin.delete-modal title="Delete Category"
+                                        description="Are you sure you want to permanently delete the category '{{ $category->name }}'? This action is irreversible."
+                                        actionText="Delete Category"
+                                        actionUrl="{{ route('admin.categories.destroy', $category) }}" />
                                 @empty
                                     <p>No categories found</p>
                                 @endforelse
