@@ -89,6 +89,16 @@
         <div class="min-h-screen w-full bg-gray-100 lg:ps-64">
             <div class="space-y-4 p-4 sm:space-y-6 sm:p-6">
                 <div class="mx-auto max-w-7xl space-y-4 sm:px-6 lg:px-8">
+                    @if ($back)
+                        <a href="{{ $back }}"
+                            class="inline-flex items-center gap-x-1 rounded-lg px-2 text-sm font-medium text-gray-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-chevron-left">
+                                <path d="m15 18-6-6 6-6" />
+                            </svg> Back
+                        </a>
+                    @endif
                     <header class="rounded-xl bg-white shadow">
                         <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
                             {{ $header }}

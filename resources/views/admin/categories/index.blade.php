@@ -52,6 +52,7 @@
                         <!-- Table -->
                         <table class="min-w-full divide-y divide-gray-200">
                             <thead class="bg-gray-50">
+
                                 <tr>
                                     <th scope="col" class="px-6 py-3 text-start">
                                         <div class="flex items-center gap-x-2">
@@ -81,33 +82,38 @@
                             </thead>
 
                             <tbody class="divide-y divide-gray-200">
-                                <tr>
-                                    <td class="size-px whitespace-nowrap">
-                                        <div class="px-6 py-3">
-                                            <span class="text-sm text-gray-600">01</span>
-                                        </div>
-                                    </td>
-                                    <td class="size-px whitespace-nowrap">
-                                        <div class="px-6 py-3">
-                                            <span class="text-sm text-gray-600">Streamlab</span>
-                                        </div>
-                                    </td>
-                                    <td class="size-px whitespace-nowrap">
-                                        <div class="px-6 py-3">
-                                            <span class="text-sm text-gray-600">Lorem ipsum dolor sit amet
-                                                consectetur adipisicing elit. Quia, est</span>
-                                        </div>
-                                    </td>
+                                @forelse ($categories as $category)
+                                    <tr>
+                                        <td class="size-px whitespace-nowrap">
+                                            <div class="px-6 py-3">
+                                                <span
+                                                    class="text-sm text-gray-600">{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
+                                            </div>
+                                        </td>
+                                        <td class="size-px whitespace-nowrap">
+                                            <div class="px-6 py-3">
+                                                <span class="text-sm text-gray-600">{{ $category->name }}</span>
+                                            </div>
+                                        </td>
+                                        <td class="size-px whitespace-nowrap">
+                                            <div class="px-6 py-3">
+                                                <span
+                                                    class="text-sm text-gray-600">{{ Str::limit($category->description, 100) }}</span>
+                                            </div>
+                                        </td>
 
-                                    <td class="size-px whitespace-nowrap">
-                                        <div class="space-x-2 px-6 py-1.5">
-                                            <a href="#"
-                                                class="inline-flex items-center gap-x-2 rounded-lg border border-transparent text-sm font-semibold text-blue-600 hover:text-blue-800 focus:text-blue-800 focus:outline-none disabled:pointer-events-none disabled:opacity-50">Edit</a>
-                                            <button type="button"
-                                                class="inline-flex items-center gap-x-2 rounded-lg border border-transparent text-sm font-semibold text-red-600 hover:text-red-800 focus:text-red-800 focus:outline-none disabled:pointer-events-none disabled:opacity-50">Delete</button>
-                                        </div>
-                                    </td>
-                                </tr>
+                                        <td class="size-px whitespace-nowrap">
+                                            <div class="space-x-2 px-6 py-1.5">
+                                                <a href="#"
+                                                    class="inline-flex items-center gap-x-2 rounded-lg border border-transparent text-sm font-semibold text-blue-600 hover:text-blue-800 focus:text-blue-800 focus:outline-none disabled:pointer-events-none disabled:opacity-50">Edit</a>
+                                                <button type="button"
+                                                    class="inline-flex items-center gap-x-2 rounded-lg border border-transparent text-sm font-semibold text-red-600 hover:text-red-800 focus:text-red-800 focus:outline-none disabled:pointer-events-none disabled:opacity-50">Delete</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <p>No categories found</p>
+                                @endforelse
 
                             </tbody>
                         </table>
