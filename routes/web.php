@@ -1,6 +1,12 @@
 <?php
 
+use App\Http\Controllers\BankController;
+use App\Http\Controllers\BookingController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\TourPackageController;
+use App\Http\Controllers\TourPhotoController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
@@ -11,17 +17,17 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
 
     Route::view('profile', 'admin.profile')->name('profile');
 
-    Route::resource('categories', Controller::class);
+    Route::resource('categories', CategoryController::class);
 
-    Route::resource('tour-packages', Controller::class);
+    Route::resource('tour-packages', TourPackageController::class);
 
-    Route::resource('tour-photos', Controller::class);
+    Route::resource('tour-photos', TourPhotoController::class);
 
-    Route::resource('reviews', Controller::class);
+    Route::resource('reviews', ReviewController::class);
 
-    Route::resource('banks', Controller::class);
+    Route::resource('banks', BankController::class);
 
-    Route::resource('bookings', Controller::class);
+    Route::resource('bookings', BookingController::class);
 
 });
 
