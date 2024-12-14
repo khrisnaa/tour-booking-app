@@ -12,7 +12,7 @@
                             <input type="text" wire:model.live.debounce.300ms="search" name="search"
                                 id="hs-table-with-pagination-search"
                                 class="block w-full rounded-lg border-gray-200 px-3 py-2 ps-9 text-sm shadow-sm focus:z-10 focus:border-indigo-500 focus:ring-indigo-500 disabled:pointer-events-none disabled:opacity-50"
-                                placeholder="Search for items">
+                                autocomplete="off" placeholder="Search for items">
                             <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
                                 <svg class="size-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24"
                                     height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -92,48 +92,18 @@
                                 </tr>
 
                             @empty
-                                <p>No categories found</p>
+                                <tr>
+                                    <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
+                                        No categories found</td>
+                                </tr>
                             @endforelse
-
                         </tbody>
                     </table>
                     <!-- End Table -->
 
                     <!-- Footer -->
-                    <div
-                        class="grid gap-3 border-t border-gray-200 px-6 py-4 md:flex md:items-center md:justify-between">
-                        <div>
-                            <p class="text-sm text-gray-600">
-                                <span class="font-semibold text-gray-800">6</span> results
-                            </p>
-                        </div>
-                        <div>
-                            {{ $categories->links('vendor.livewire.tailwind') }}
-                        </div>
-
-                        <div>
-                            <div class="inline-flex gap-x-2">
-                                <button type="button"
-                                    class="inline-flex items-center gap-x-2 rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-800 shadow-sm hover:bg-gray-50 focus:bg-gray-50 focus:outline-none disabled:pointer-events-none disabled:opacity-50">
-                                    <svg class="size-4 shrink-0" xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="m15 18-6-6 6-6" />
-                                    </svg>
-                                    Prev
-                                </button>
-
-                                <button type="button"
-                                    class="inline-flex items-center gap-x-2 rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-800 shadow-sm hover:bg-gray-50 focus:bg-gray-50 focus:outline-none disabled:pointer-events-none disabled:opacity-50">
-                                    Next
-                                    <svg class="size-4 shrink-0" xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="m9 18 6-6-6-6" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
+                    <div class="h-16 border-t border-gray-200 px-6 py-4 md:flex md:items-center md:justify-end">
+                        {{ $categories->links('vendor.livewire.tailwind') }}
                     </div>
                     <!-- End Footer -->
                 </div>

@@ -16,7 +16,7 @@
     </head>
 
     <body class="font-sans antialiased">
-
+        <x-custom-pagination />
     </body>
 
 </html>

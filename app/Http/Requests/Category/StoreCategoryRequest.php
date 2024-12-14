@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Category;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreCategoryRequest extends FormRequest
@@ -26,7 +27,7 @@ class StoreCategoryRequest extends FormRequest
                 'required',
                 'string',
                 'max:255',
-                'unique:categories,name'
+                Rule::unique('categories', 'name')->withoutTrashed()
             ],
             'description' => [
                 'required',
