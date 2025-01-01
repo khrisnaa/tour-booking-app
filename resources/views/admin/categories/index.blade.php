@@ -16,8 +16,15 @@
     </x-slot>
 
     <!-- Table Section -->
-    <livewire:category-table />
-    <!-- End Table Section -->
+    <div>
+        <livewire:delete-modal
+            title="Confirm Deletion"
+            description="Are you sure you want to delete this category? This action cannot be undone. All associated data will be permanently removed."
+        />
+
+        <livewire:category-table />
     </div>
+
+    <!-- End Table Section -->
 
 </x-app-layout>
