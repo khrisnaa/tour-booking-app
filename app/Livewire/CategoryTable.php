@@ -17,7 +17,7 @@ class CategoryTable extends Component
     }
     public function render()
     {
-        $categories = Category::where('name', 'like', '%' . $this->search . '%')->paginate(10);
+        $categories = Category::where('name', 'like', '%'.$this->search.'%')->orderByDesc('created_at')->paginate(10);
         return view('livewire.category-table', compact('categories'));
     }
 
