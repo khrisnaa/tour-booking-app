@@ -9,7 +9,10 @@
 
     <!-- Form Section -->
     <div>
-        <form action="{{ route('admin.categories.store') }}" method="POST">
+        <form
+            action="{{ route('admin.categories.store') }}"
+            method="POST"
+        >
             @csrf
             <!-- Card -->
             <div class="rounded-xl bg-white shadow">
@@ -19,25 +22,48 @@
                     <div class="space-y-4 sm:space-y-6">
 
                         <div class="space-y-2">
-                            <x-input-label for="name" :value="__('Category name')" />
-                            <x-text-input id="name" class="mt-1 block w-full" type="text" name="name"
-                                :value="old('name')" autofocus autocomplete="off" placeholder="Enter category name" />
-                            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                            <x-input-label
+                                for="name"
+                                :value="__('Category name')"
+                            />
+                            <x-text-input
+                                class="mt-1 block w-full"
+                                id="name"
+                                name="name"
+                                type="text"
+                                :value="old('name')"
+                                autofocus
+                                autocomplete="off"
+                                placeholder="Enter category name"
+                            />
+                            <x-input-error
+                                class="mt-2"
+                                :messages="$errors->get('name')"
+                            />
                         </div>
 
                         <div class="space-y-2">
-                            <x-input-label for="description" :value="__('Category description')" />
-                            <textarea id="description" name="description"
-                                class="block w-full rounded-lg border-gray-200 px-3 py-2 text-sm focus:border-indigo-500 focus:ring-indigo-500 disabled:pointer-events-none disabled:opacity-50"
-                                rows="6" placeholder="Enter a brief description of the category, highlighting its key features or purpose.">{{ old('description') }}</textarea>
-                            <x-input-error :messages="$errors->get('description')" class="mt-2" />
+                            <x-input-label
+                                for="description"
+                                :value="__('Category description')"
+                            />
+                            <x-text-editor
+                                id="description"
+                                name="description"
+                            />
+                            <x-input-error
+                                class="mt-2"
+                                :messages="$errors->get('description')"
+                            />
                         </div>
                     </div>
                     <!-- End Grid -->
 
                     <div class="mt-5 flex justify-center gap-x-2">
-                        <button type="submit"
-                            class="inline-flex items-center gap-x-2 rounded-lg border border-transparent bg-indigo-600 px-4 py-3 text-sm font-medium text-white hover:bg-indigo-700 focus:bg-indigo-700 focus:outline-none disabled:pointer-events-none disabled:opacity-50">
+                        <button
+                            class="inline-flex items-center gap-x-2 rounded-lg border border-transparent bg-indigo-600 px-4 py-3 text-sm font-medium text-white hover:bg-indigo-700 focus:bg-indigo-700 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                            type="submit"
+                        >
                             Create Category
                         </button>
                     </div>
@@ -48,4 +74,7 @@
     </div>
     <!-- End Form Section -->
 
+    @push('scripts')
+        @vite('resources/js/tiptap.js')
+    @endpush
 </x-app-layout>

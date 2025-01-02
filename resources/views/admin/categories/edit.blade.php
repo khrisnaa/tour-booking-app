@@ -10,16 +10,22 @@
                     organized and accurate</p>
             </div>
             <div>
-                <x-admin.delete-modal title="Delete Category"
+                <x-admin.delete-modal
+                    title="Delete Category"
                     description="Are you sure you want to permanently delete this category? This action is irreversible."
-                    actionText="Delete Category" actionUrl="{{ route('admin.categories.destroy', $category) }}" />
+                    actionText="Delete Category"
+                    actionUrl="{{ route('admin.categories.destroy', $category) }}"
+                />
             </div>
         </div>
     </x-slot>
 
     <!-- Form Section -->
     <div>
-        <form action="{{ route('admin.categories.update', $category) }}" method="POST">
+        <form
+            action="{{ route('admin.categories.update', $category) }}"
+            method="POST"
+        >
             @csrf
             @method('PUT')
             <!-- Card -->
@@ -30,25 +36,56 @@
                     <div class="space-y-4 sm:space-y-6">
 
                         <div class="space-y-2">
-                            <x-input-label for="name" :value="__('Category name')" />
-                            <x-text-input id="name" class="mt-1 block w-full" type="text" name="name"
-                                :value="old('name', $category->name ?? '')" autocomplete="off" placeholder="Enter category name" />
-                            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                            <x-input-label
+                                for="name"
+                                :value="__('Category name')"
+                            />
+                            <x-text-input
+                                class="mt-1 block w-full"
+                                id="name"
+                                name="name"
+                                type="text"
+                                :value="old('name', $category->name ?? '')"
+                                autocomplete="off"
+                                placeholder="Enter category name"
+                            />
+                            <x-input-error
+                                class="mt-2"
+                                :messages="$errors->get('name')"
+                            />
                         </div>
 
-                        <div class="space-y-2">
+                        {{-- <div class="space-y-2">
                             <x-input-label for="description" :value="__('Category description')" />
                             <textarea id="description" name="description"
                                 class="block w-full rounded-lg border-gray-200 px-3 py-2 text-sm focus:border-indigo-500 focus:ring-indigo-500 disabled:pointer-events-none disabled:opacity-50"
                                 rows="6" placeholder="Enter a brief description of the category, highlighting its key features or purpose.">{{ old('description', $category->description ?? '') }}</textarea>
                             <x-input-error :messages="$errors->get('description')" class="mt-2" />
+                        </div> --}}
+
+                        <div class="space-y-2">
+                            <x-input-label
+                                for="description"
+                                :value="__('Category description')"
+                            />
+                            <x-text-editor
+                                id="description"
+                                name="description"
+                                :value="old('description', $category->description ?? '')"
+                            />
+                            <x-input-error
+                                class="mt-2"
+                                :messages="$errors->get('description')"
+                            />
                         </div>
                     </div>
                     <!-- End Grid -->
 
                     <div class="mt-5 flex justify-center gap-x-2">
-                        <button type="submit"
-                            class="inline-flex items-center gap-x-2 rounded-lg border border-transparent bg-indigo-600 px-4 py-3 text-sm font-medium text-white hover:bg-indigo-700 focus:bg-indigo-700 focus:outline-none disabled:pointer-events-none disabled:opacity-50">
+                        <button
+                            class="inline-flex items-center gap-x-2 rounded-lg border border-transparent bg-indigo-600 px-4 py-3 text-sm font-medium text-white hover:bg-indigo-700 focus:bg-indigo-700 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                            type="submit"
+                        >
                             Update Category
                         </button>
                     </div>
@@ -58,5 +95,7 @@
         </form>
     </div>
     <!-- End Form Section -->
-
+    @push('scripts')
+        @vite('resources/js/tiptap.js')
+    @endpush
 </x-app-layout>

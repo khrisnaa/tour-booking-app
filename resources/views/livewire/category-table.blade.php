@@ -106,7 +106,7 @@
                                     <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
                                         {{ $category->name }}</td>
                                     <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
-                                        {{ Str::limit($category->description, 100) }}</td>
+                                        {!! Str::limit($category->description, 100) !!}</td>
                                     <td class="space-x-4 whitespace-nowrap px-9 py-4 text-end text-sm font-medium">
                                         <button
                                             class="inline-flex items-center gap-x-2 rounded-lg border border-transparent text-sm font-semibold text-blue-600 hover:text-blue-800 focus:text-blue-800 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
