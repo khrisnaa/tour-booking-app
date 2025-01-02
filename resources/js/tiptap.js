@@ -27,7 +27,7 @@ const editor = new Editor({
         }),
         Placeholder.configure({
             placeholder: "Add a message, if you'd like.",
-            emptyNodeClass: "before:text-gray-500",
+            emptyNodeClass: "before:text-gray-500 text-sm ",
         }),
         Paragraph.configure({
             HTMLAttributes: {
