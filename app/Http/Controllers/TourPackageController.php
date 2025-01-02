@@ -12,7 +12,8 @@ class TourPackageController extends Controller
      */
     public function index()
     {
-        //
+        $tours = TourPackage::orderByDesc('created_at')->get();
+        return view('admin.tour-packages.index', compact('tours'));
     }
 
     /**
