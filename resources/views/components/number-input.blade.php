@@ -11,6 +11,7 @@
             type="number"
             aria-roledescription="Number field"
             style="-moz-appearance: textfield;"
+            {{ $attributes }}
             oninput="removeLeadingZero(this)">
         <div class="flex items-center justify-end gap-x-1.5">
             <button

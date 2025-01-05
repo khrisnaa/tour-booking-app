@@ -16,9 +16,9 @@ return new class extends Migration
             $table->foreignUuid('category_id')->constrained()->onDelete('cascade');
             $table->string('name');
             $table->text('description');
-            $table->decimal('price');
-            $table->date('duration_days');
-            $table->date('duration_hours');
+            $table->decimal('price', 15, 2);
+            $table->integer('duration_days');
+            $table->integer('duration_hours');
             $table->string('location');
             $table->string('thumbnail');
             $table->string('slug');
