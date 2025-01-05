@@ -147,8 +147,6 @@ const inputElement = document.querySelector(
     `#${editorElement.getAttribute("data-hs-editor-field")}`
 );
 
-const defaultContent = editorElement.getAttribute("data-default-content");
-
 editor.on("update", () => {
     const content = editor.getHTML();
     inputElement.value = content;
