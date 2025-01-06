@@ -4,6 +4,7 @@
         id="price-input"
         type="text"
         {{ $attributes }}
+        autocomplete="off"
         placeholder="0.00"
         oninput="formatNumber(this)"
         onchange="updateHiddenInput()">

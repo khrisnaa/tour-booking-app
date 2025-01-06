@@ -73,6 +73,7 @@ class TourPackageController extends Controller
     {
 
         $categories = Category::orderBy('name')->get();
+        $tourPackage->load('tourPhotos');
         return view('admin.tour-packages.edit', compact(['tourPackage', 'categories']));
     }
 

@@ -13,7 +13,7 @@
     <option value="">Choose</option>
     @foreach ($items as $item)
         <option value="{{ $item['id'] }}"
-            @if (old($name) == $item['id']) selected @endif>
+            @if (old($attributes->get('name'), $attributes->get('value')) == $item['id']) selected @endif>
             {{ $item['name'] }}
         </option>
     @endforeach

@@ -6,11 +6,11 @@
         type="file"
         onchange="previewImage(event)">
 
-    <div class="relative mt-2 hidden w-fit rounded-xl border border-gray-200 bg-white p-2"
+    <div class="{{ $value ? '' : 'hidden' }} relative mt-2 w-fit rounded-xl border border-gray-200 bg-white p-2"
         id="preview">
         <img class="mb-2 aspect-square h-full max-h-64 rounded-lg object-cover"
-            id="preview"
-            src="#">
+            id="preview-image"
+            src="{{ $value ? asset('storage/' . $value) : '#' }}">
         <div class="mb-1 flex items-center justify-between gap-x-3 whitespace-nowrap">
             <div class="w-10">
                 <span class="text-sm text-gray-800">
@@ -47,7 +47,6 @@
                 </button>
             </div>
         </div>
-
     </div>
 
     <script>
@@ -57,10 +56,9 @@
 
             reader.onload = function(e) {
                 const preview = document.getElementById('preview');
-                const deleteBtn = document.getElementById('delete-btn');
-                preview.querySelector('img').src = e.target.result;
+                const previewImage = document.getElementById('preview-image');
+                previewImage.src = e.target.result;
                 preview.classList.remove('hidden');
-                deleteBtn.classList.remove('hidden');
             };
 
             if (file) {
@@ -68,14 +66,13 @@
             }
         }
 
-
         function deletePreview() {
             const preview = document.getElementById('preview');
-            const deleteBtn = document.getElementById('delete-btn');
+            const previewImage = document.getElementById('preview-image');
             const fileInput = document.getElementById('file-input');
 
             preview.classList.add('hidden');
-            deleteBtn.classList.add('hidden');
+            previewImage.src = '#';
             fileInput.value = '';
         }
     </script>

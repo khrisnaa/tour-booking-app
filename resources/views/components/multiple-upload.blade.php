@@ -8,7 +8,44 @@
         onchange="previewImages(event)">
 
     <div class="mt-4 grid grid-cols-4"
-        id="preview-container"></div>
+        id="preview-container">
+        <!-- Loop over the default photos and display them as previews -->
+        @if (isset($value) && is_array($value))
+            @foreach ($value as $imageUrl)
+                <div class="relative mt-2 w-fit rounded-xl border border-gray-200 bg-white p-2">
+                    <img class="mb-2 aspect-square h-full max-h-64 rounded-lg object-cover"
+                        src="{{ asset('storage/' . $imageUrl) }}"
+                        alt="Uploaded Photo">
+                    <button class="text-gray-500 hover:text-gray-800"
+                        type="button"
+                        onclick="deletePreview('{{ $imageUrl }}')">
+                        <svg class="size-3.5 shrink-0"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M3 6h18"></path>
+                            <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                            <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                            <line x1="10"
+                                x2="10"
+                                y1="11"
+                                y2="17"></line>
+                            <line x1="14"
+                                x2="14"
+                                y1="11"
+                                y2="17"></line>
+                        </svg>
+                    </button>
+                </div>
+            @endforeach
+        @endif
+    </div>
 
     <script>
         function previewImages(event) {
@@ -52,28 +89,21 @@
                         'focus:outline-none');
                     deleteBtn.id = 'delete-btn';
                     deleteBtn.type = 'button';
-                    deleteBtn.innerHTML = `  <svg class="size-3.5 shrink-0"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M3 6h18"></path>
-                        <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
-                        <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
-                        <line x1="10"
-                            x2="10"
-                            y1="11"
-                            y2="17"></line>
-                        <line x1="14"
-                            x2="14"
-                            y1="11"
-                            y2="17"></line>
-                    </svg>`;
+                    deleteBtn.innerHTML = `  
+                        <svg class="size-3.5 shrink-0"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24"
+                            viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M3 6h18"></path>
+                            <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                            <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                            <line x1="10" x2="10" y1="11" y2="17"></line>
+                            <line x1="14" x2="14" y1="11" y2="17"></line>
+                        </svg>`;
 
                     deleteBtn.onclick = function() {
                         previewDiv.remove();
@@ -87,13 +117,11 @@
 
                         event.target.files = dataTransfer.files;
 
-
                         const inputEvent = new Event('change', {
                             bubbles: true
                         });
                         event.target.dispatchEvent(inputEvent);
                     };
-
 
                     deleteBtnWrapper.appendChild(deleteBtn);
                     deleteBtnContainer.appendChild(textContainer);
@@ -107,6 +135,13 @@
                     reader.readAsDataURL(file);
                 }
             });
+        }
+
+        // Function to handle the deletion of existing photos
+        function deletePreview(imageUrl) {
+            // Implement logic to remove the image from the preview
+            // This may involve removing the image URL from the form data or similar
+            console.log('Delete image:', imageUrl);
         }
     </script>
 </div>

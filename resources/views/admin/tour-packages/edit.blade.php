@@ -39,7 +39,6 @@
                                 name="name"
                                 type="text"
                                 :value="old('name', $tourPackage->name ?? '')"
-                                autofocus
                                 autocomplete="off"
                                 placeholder="Enter package name" />
                             <x-input-error class="mt-2"
@@ -50,7 +49,8 @@
                             <x-input-label for="thumbnail"
                                 :value="__('Thumbnail')" />
                             <x-single-upload id="thumbanil"
-                                name="thumbnail" />
+                                name="thumbnail"
+                                :value="old('name', $tourPackage->thumbnail ?? '')" />
                             <x-input-error class="mt-2"
                                 :messages="$errors->get('thumbnail')" />
                         </div>
@@ -83,6 +83,8 @@
                                     id="location"
                                     name="location"
                                     type="text"
+                                    autocomplete="off"
+                                    :value="old('price', $tourPackage->location ?? 0)"
                                     placeholder="Enter package location" />
                                 <x-input-error class="mt-2"
                                     :messages="$errors->get('location')" />
@@ -92,17 +94,21 @@
 
                         <div class="grid grid-cols-2 gap-4">
                             <div class="space-y-2">
-                                <x-input-label for="duration days"
+                                <x-input-label for="duration-days"
                                     :value="__('Package duration days')" />
-                                <x-number-input name="duration_days" />
+                                <x-number-input id="duration-days"
+                                    name="duration_days"
+                                    :value="old('duration_days', $tourPackage->duration_days ?? 0)" />
                                 <x-input-error class="mt-2"
                                     :messages="$errors->get('duration days')" />
                             </div>
 
                             <div class="space-y-2">
-                                <x-input-label for="duration hours"
+                                <x-input-label for="duration-hours"
                                     :value="__('Package duration hours')" />
-                                <x-number-input name="duration_hours" />
+                                <x-number-input id="duration-hours"
+                                    name="duration_hours"
+                                    :value="old('duration_hours', $tourPackage->duration_hours ?? 0)" />
                                 <x-input-error class="mt-2"
                                     :messages="$errors->get('duration hours')" />
                             </div>
@@ -113,7 +119,8 @@
                                 :value="__('Photos')" />
 
                             <x-multiple-upload id="photos"
-                                name="photos[]" />
+                                name="photos[]"
+                                :value="old('photos', $tourPackage->tourPhotos->pluck('photo')->toArray())" />
 
                             <x-input-error class="mt-2"
                                 :messages="$errors->get('photos')" />
