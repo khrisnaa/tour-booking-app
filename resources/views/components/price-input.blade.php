@@ -33,5 +33,11 @@
             // Kirimkan nilai numerik ke input tersembunyi
             document.getElementById('price-numeric').value = numericValue;
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            let input = document.getElementById('price-input');
+            formatNumber(input);
+            updateHiddenInput();
+        });
     </script>
 </div>

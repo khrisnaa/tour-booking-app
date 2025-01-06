@@ -123,11 +123,11 @@
                                         {{ $tour->location }}
                                     </td>
                                     <td class="space-x-4 whitespace-nowrap px-9 py-4 text-end text-sm font-medium">
-                                        <button
-                                            class="inline-flex items-center gap-x-2 rounded-lg border border-transparent text-sm font-semibold text-blue-600 hover:text-blue-800 focus:text-blue-800 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
-                                            type="button">
+                                        <a class="inline-flex items-center gap-x-2 rounded-lg border border-transparent text-sm font-semibold text-blue-600 hover:text-blue-800 focus:text-blue-800 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                                            type="button"
+                                            href="{{ route('admin.tour-packages.edit', $tour) }}">
                                             Edit
-                                        </button>
+                                        </a>
                                         <button
                                             class="inline-flex items-center gap-x-2 rounded-lg border border-transparent text-sm font-semibold text-red-600 hover:text-red-800 focus:text-red-800 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                                             type="button">
@@ -138,9 +138,8 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-600">
-                                        Empty
-                                    </td>
+                                    <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
+                                        No tour packages found</td>
                                 </tr>
                             @endforelse
                         </tbody>

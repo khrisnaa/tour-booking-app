@@ -28,7 +28,7 @@
                                 :items="$categories"
                                 :value="old('category_id')" />
                             <x-input-error class="mt-2"
-                                :messages="$errors->get('category')" />
+                                :messages="$errors->get('category_id')" />
                         </div>
 
                         <div class="space-y-2">
@@ -39,8 +39,6 @@
                                 name="name"
                                 type="text"
                                 :value="old('name')"
-                                autofocus
-                                autocomplete="off"
                                 placeholder="Enter package name" />
                             <x-input-error class="mt-2"
                                 :messages="$errors->get('name')" />
@@ -50,10 +48,12 @@
                             <x-input-label for="thumbnail"
                                 :value="__('Thumbnail')" />
                             <x-single-upload id="thumbanil"
-                                name="thumbnail" />
+                                name="thumbnail"
+                                :value="old('thumbnail')" />
                             <x-input-error class="mt-2"
                                 :messages="$errors->get('thumbnail')" />
                         </div>
+
                         <div class="space-y-2">
                             <x-input-label for="description"
                                 :value="__('Package description')" />
@@ -83,6 +83,7 @@
                                     id="location"
                                     name="location"
                                     type="text"
+                                    :value="old('location')"
                                     placeholder="Enter package location" />
                                 <x-input-error class="mt-2"
                                     :messages="$errors->get('location')" />
@@ -92,19 +93,23 @@
 
                         <div class="grid grid-cols-2 gap-4">
                             <div class="space-y-2">
-                                <x-input-label for="duration days"
+                                <x-input-label for="duration-days"
                                     :value="__('Package duration days')" />
-                                <x-number-input name="duration_days" />
+                                <x-number-input id="duration-days"
+                                    name="duration_days"
+                                    :value="old('duration_days')" />
                                 <x-input-error class="mt-2"
-                                    :messages="$errors->get('duration days')" />
+                                    :messages="$errors->get('duration_days')" />
                             </div>
 
                             <div class="space-y-2">
-                                <x-input-label for="duration hours"
+                                <x-input-label for="duration-hours"
                                     :value="__('Package duration hours')" />
-                                <x-number-input name="duration_hours" />
+                                <x-number-input id="duration-hours"
+                                    name="duration_hours"
+                                    :value="old('duration_hours')" />
                                 <x-input-error class="mt-2"
-                                    :messages="$errors->get('duration hours')" />
+                                    :messages="$errors->get('duration_hours')" />
                             </div>
                         </div>
 
@@ -116,7 +121,7 @@
                                 name="photos[]" />
 
                             <x-input-error class="mt-2"
-                                :messages="$errors->get('photos')" />
+                                :messages="$errors->get('photos[]')" />
                         </div>
 
                     </div>

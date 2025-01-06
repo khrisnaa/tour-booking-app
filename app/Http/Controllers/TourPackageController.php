@@ -16,9 +16,7 @@ class TourPackageController extends Controller
      */
     public function index()
     {
-        $categories = Category::orderBy('name')->get();
-        $tourPackages = TourPackage::orderByDesc('created_at')->get();
-        return view('admin.tour-packages.index', compact('tourPackages', 'categories'));
+        return view('admin.tour-packages.index');
     }
 
     /**
@@ -57,7 +55,7 @@ class TourPackageController extends Controller
             }
         });
 
-        return redirect()->route('admin.tour-packages.index');
+        return redirect()->route('admin.tour-packages.index')->with('success', ['title' => 'Successfully created', 'description' => 'You have successfully created a tour package']);
     }
 
     /**
@@ -73,7 +71,9 @@ class TourPackageController extends Controller
      */
     public function edit(TourPackage $tourPackage)
     {
-        //
+
+        $categories = Category::orderBy('name')->get();
+        return view('admin.tour-packages.edit', compact(['tourPackage', 'categories']));
     }
 
     /**
