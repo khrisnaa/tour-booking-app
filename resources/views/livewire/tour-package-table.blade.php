@@ -98,50 +98,59 @@
                         </thead>
 
                         <tbody class="divide-y divide-gray-200">
-                            <tr>
-                                <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-600">
-                                    01
-                                </td>
-                                <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-600">
-                                    Bali Adventure
-                                </td>
-                                <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-600">
-                                    <img class="h-10 w-10 rounded"
-                                        src="https://via.placeholder.com/50"
-                                        alt="Thumbnail" />
-                                </td>
 
-                                <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
-                                    $200
-                                </td>
-                                <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
-                                    3 Days, 2 Nights
-                                </td>
-                                <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
-                                    Bali, Indonesia
-                                </td>
-                                <td class="space-x-4 whitespace-nowrap px-9 py-4 text-end text-sm font-medium">
-                                    <button
-                                        class="inline-flex items-center gap-x-2 rounded-lg border border-transparent text-sm font-semibold text-blue-600 hover:text-blue-800 focus:text-blue-800 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
-                                        type="button">
-                                        Edit
-                                    </button>
-                                    <button
-                                        class="inline-flex items-center gap-x-2 rounded-lg border border-transparent text-sm font-semibold text-red-600 hover:text-red-800 focus:text-red-800 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
-                                        type="button">
-                                        Delete
-                                    </button>
+                            @forelse ($tours as $index => $tour)
+                                <tr>
+                                    <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-600">
+                                        {{ str_pad($tours->firstItem() + $index, 2, '0', STR_PAD_LEFT) }}
+                                    </td>
+                                    <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-600">
+                                        {{ $tour->name }}
+                                    </td>
+                                    <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-600">
+                                        <img class="h-10 w-10 rounded"
+                                            src="{{ Storage::url($tour->thumbnail) }}"
+                                            alt="Thumbnail" />
+                                    </td>
 
-                                </td>
-                            </tr>
+                                    <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
+                                        {{ formatPrice($tour->price) }}
+                                    </td>
+                                    <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
+                                        {{ formatDuration($tour->duration_days, $tour->duration_hours) }}
+                                    </td>
+                                    <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
+                                        {{ $tour->location }}
+                                    </td>
+                                    <td class="space-x-4 whitespace-nowrap px-9 py-4 text-end text-sm font-medium">
+                                        <button
+                                            class="inline-flex items-center gap-x-2 rounded-lg border border-transparent text-sm font-semibold text-blue-600 hover:text-blue-800 focus:text-blue-800 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                                            type="button">
+                                            Edit
+                                        </button>
+                                        <button
+                                            class="inline-flex items-center gap-x-2 rounded-lg border border-transparent text-sm font-semibold text-red-600 hover:text-red-800 focus:text-red-800 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                                            type="button">
+                                            Delete
+                                        </button>
+
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-600">
+                                        Empty
+                                    </td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
                     <!-- End Table -->
 
                     <!-- Footer -->
-                    {{-- <div class="h-16 border-t border-gray-200 px-6 py-4 md:flex md:items-center md:justify-end">
-                        {{ $categories->links('vendor.livewire.tailwind') }}
-                    </div> --}}
+                    <div class="h-16 border-t border-gray-200 px-6 py-4 md:flex md:items-center md:justify-end">
+                        {{ $tours->links('vendor.livewire.tailwind') }}
+                    </div>
                     <!-- End Footer -->
                 </div>
             </div>
