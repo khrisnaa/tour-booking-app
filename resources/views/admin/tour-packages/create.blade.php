@@ -39,7 +39,8 @@
                                 name="name"
                                 type="text"
                                 :value="old('name')"
-                                placeholder="Enter package name" />
+                                autocomplete="off"
+                                placeholder="Art Center Cultural" />
                             <x-input-error class="mt-2"
                                 :messages="$errors->get('name')" />
                         </div>
@@ -71,6 +72,7 @@
                                     :value="__('Package price')" />
                                 <x-price-input id="price"
                                     name="price"
+                                    autocomplete="off"
                                     :value="old('price')" />
                                 <x-input-error class="mt-2"
                                     :messages="$errors->get('price')" />
@@ -84,7 +86,8 @@
                                     name="location"
                                     type="text"
                                     :value="old('location')"
-                                    placeholder="Enter package location" />
+                                    autocomplete="off"
+                                    placeholder="Denpasar, Bali" />
                                 <x-input-error class="mt-2"
                                     :messages="$errors->get('location')" />
                             </div>
@@ -117,8 +120,7 @@
                             <x-input-label for="photos"
                                 :value="__('Photos')" />
 
-                            <x-multiple-upload id="photos"
-                                name="photos[]" />
+                            <x-multiple-file-upload name="photos[]" />
 
                             <x-input-error class="mt-2"
                                 :messages="$errors->get('photos[]')" />

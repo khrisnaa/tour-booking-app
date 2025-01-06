@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\TourPackage\StoreTourPackageRequest;
+use App\Http\Requests\TourPackage\UpdateTourPackageRequest;
 
 class TourPackageController extends Controller
 {
@@ -43,12 +44,12 @@ class TourPackageController extends Controller
 
             $validated['slug'] = Str::slug($validated['name']);
 
-            $packageTour = TourPackage::create($validated);
+            $tourPackage = TourPackage::create($validated);
 
             if ($request->hasFile('photos')) {
                 foreach ($request->file('photos') as $photo) {
                     $photoPath = $photo->store('tour_photos/'.date('Y/m/d'), 'public');
-                    $packageTour->tourPhotos()->create([
+                    $tourPackage->tourPhotos()->create([
                         'photo' => $photoPath
                     ]);
                 }
@@ -71,18 +72,39 @@ class TourPackageController extends Controller
      */
     public function edit(TourPackage $tourPackage)
     {
-
         $categories = Category::orderBy('name')->get();
         $tourPackage->load('tourPhotos');
         return view('admin.tour-packages.edit', compact(['tourPackage', 'categories']));
     }
-
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TourPackage $tourPackage)
+    public function update(UpdateTourPackageRequest $request, TourPackage $tourPackage)
     {
-        //
+
+        DB::transaction(function () use ($request, $tourPackage) {
+            $validated = $request->validated();
+
+            if ($request->hasFile('thumbnail')) {
+                $thumbnailPath = $request->file('thumbnail')->store('thumbnails/'.date('Y/m/d'), 'public');
+                $validated['thumbnail'] = $thumbnailPath;
+            }
+
+            $validated['slug'] = Str::slug($validated['name']);
+
+            $tourPackage->update($validated);
+
+            if ($request->hasFile('photos')) {
+                foreach ($request->file('photos') as $photo) {
+                    $photoPath = $photo->store('tour_photos/'.date('Y/m/d'), 'public');
+                    $tourPackage->tourPhotos()->create([
+                        'photo' => $photoPath
+                    ]);
+                }
+            }
+        });
+
+        return redirect()->route('admin.tour-packages.index')->with('success', ['title' => 'Successfully update', 'description' => 'You have successfully updated a tour package']);
     }
 
     /**

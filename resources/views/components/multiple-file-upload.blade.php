@@ -1,13 +1,13 @@
 <div>
-    <div class="p-16">
+    <div>
         <form class="max-w-sm">
             <label class="sr-only"
                 for="file-input">Choose file</label>
             <input
                 class="block w-full rounded-lg border border-gray-200 text-sm shadow-sm file:me-4 file:border-0 file:bg-gray-50 file:px-4 file:py-3 focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
                 id="file-input"
-                name="{{ $name }}"
                 type="file"
+                {{ $attributes }}
                 multiple
                 onchange="previewImages(event)">
         </form>
@@ -31,11 +31,6 @@
             // Menampilkan semua gambar yang ada di array allFiles
             allFiles.forEach((file, index) => {
                 const reader = new FileReader();
-                // DD
-
-                //DD
-
-
                 reader.onload = function(e) {
                     const imgWrapper = document.createElement('div');
                     imgWrapper.classList.add('relative', 'mt-2', 'w-fit', 'rounded-xl', 'border',
@@ -47,8 +42,8 @@
                         'object-cover');
 
                     const deleteButtonContainer = document.createElement('div');
-                    deleteButtonContainer.classList.add('mb-1', 'flex', 'items-center', 'justify-end',
-                        'gap-x-3', 'whitespace-nowrap', 'w-full', 'px-1');
+                    deleteButtonContainer.classList.add('mb-2', 'flex', 'items-center', 'justify-end',
+                        'gap-x-3', 'whitespace-nowrap', 'w-full', 'p-1');
 
                     const deleteButton = document.createElement('button');
                     deleteButton.classList.add('text-gray-500', 'hover:text-gray-800', 'focus:text-gray-800',

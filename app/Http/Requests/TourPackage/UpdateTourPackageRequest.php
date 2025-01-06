@@ -5,7 +5,7 @@ namespace App\Http\Requests\TourPackage;
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreTourPackageRequest extends FormRequest
+class UpdateTourPackageRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,13 +25,13 @@ class StoreTourPackageRequest extends FormRequest
         return [
             'category_id' => [
                 'required',
-                Rule::exists('categories', 'id')
+                Rule::exists('categories', 'id'),
             ],
             'name' => [
                 'required',
                 'string',
                 'max:255',
-                Rule::unique('tour_packages', 'name')->withoutTrashed()
+                Rule::unique('tour_packages', 'name')->ignore($this->route('tour_package'))->withoutTrashed(),
             ],
             'description' => [
                 'nullable',
@@ -40,38 +40,36 @@ class StoreTourPackageRequest extends FormRequest
             'price' => [
                 'required',
                 'numeric',
-                'min:0'
+                'min:0',
             ],
             'duration_days' => [
                 'required',
                 'integer',
-                'min:0'
+                'min:0',
             ],
             'duration_hours' => [
                 'required',
                 'integer',
                 'min:0',
-                'max:23'
+                'max:23',
             ],
             'location' => [
                 'required',
                 'string',
-                'max:255'
+                'max:255',
             ],
             'thumbnail' => [
-                'required',
+                'nullable',
                 'image',
                 'mimes:jpeg,png,jpg',
-                'max:10240'
+                'max:10240',
             ],
             'photos.*' => [
-                'required',
+                'nullable',
                 'image',
-                'mimes:png,jpg,jpeg',
-                'max:10240'
-            ]
+                'mimes:jpeg,png,jpg',
+                'max:10240',
+            ],
         ];
     }
-
-
 }

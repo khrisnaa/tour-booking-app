@@ -13,6 +13,7 @@
             method="POST"
             enctype="multipart/form-data">
             @csrf
+            @method('PUT')
             <!-- Card -->
             <div class="rounded-xl bg-white shadow">
 
@@ -116,11 +117,15 @@
 
                         <div class="space-y-2">
                             <x-input-label for="photos"
-                                :value="__('Photos')" />
+                                :value="__('Tour Photos')" />
+                            <livewire:delete-preview :tourPackage="$tourPackage" />
+                        </div>
 
-                            <x-multiple-upload id="photos"
-                                name="photos[]"
-                                :value="old('photos', $tourPackage->tourPhotos->pluck('photo')->toArray())" />
+                        <div class="space-y-2">
+                            <x-input-label for="photos"
+                                :value="__('Add New Photos')" />
+
+                            <x-multiple-file-upload name="photos[]" />
 
                             <x-input-error class="mt-2"
                                 :messages="$errors->get('photos')" />
@@ -133,7 +138,7 @@
                         <button
                             class="inline-flex items-center gap-x-2 rounded-lg border border-transparent bg-indigo-600 px-4 py-3 text-sm font-medium text-white hover:bg-indigo-700 focus:bg-indigo-700 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                             type="submit">
-                            Create Tour Package
+                            Save Changes
                         </button>
                     </div>
                 </div>
@@ -144,11 +149,7 @@
     <!-- End Form Section -->
 
     @push('scripts')
+        @livewireScripts
         @vite('resources/js/tiptap.js')
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"
-            integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"></script>
-        <script src="https://unpkg.com/dropzone@6.0.0-beta.2/dist/dropzone-min.js"></script>
     @endpush
 </x-app-layout>
