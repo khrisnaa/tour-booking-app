@@ -16,11 +16,9 @@
                                 type="text"
                                 wire:model.live.debounce.300ms="search"
                                 autocomplete="off"
-                                placeholder="Search for items"
-                            >
+                                placeholder="Search for items">
                             <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
-                                <svg
-                                    class="size-4 text-gray-400"
+                                <svg class="size-4 text-gray-400"
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="24"
                                     height="24"
@@ -29,13 +27,10 @@
                                     stroke="currentColor"
                                     stroke-width="2"
                                     stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                >
-                                    <circle
-                                        cx="11"
+                                    stroke-linejoin="round">
+                                    <circle cx="11"
                                         cy="11"
-                                        r="8"
-                                    ></circle>
+                                        r="8"></circle>
                                     <path d="m21 21-4.3-4.3"></path>
                                 </svg>
                             </div>
@@ -43,12 +38,9 @@
 
                         <div>
                             <div class="inline-flex gap-x-2">
-                                <a
-                                    class="inline-flex items-center gap-x-2 rounded-lg border border-transparent bg-indigo-600 px-3 py-2 text-sm font-medium text-white hover:bg-indigo-700 focus:bg-indigo-700 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
-                                    href="{{ route('admin.categories.create') }}"
-                                >
-                                    <svg
-                                        class="size-4 shrink-0"
+                                <a class="inline-flex items-center gap-x-2 rounded-lg border border-transparent bg-indigo-600 px-3 py-2 text-sm font-medium text-white hover:bg-indigo-700 focus:bg-indigo-700 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                                    href="{{ route('admin.categories.create') }}">
+                                    <svg class="size-4 shrink-0"
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="24"
                                         height="24"
@@ -57,8 +49,7 @@
                                         stroke="currentColor"
                                         stroke-width="2"
                                         stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                    >
+                                        stroke-linejoin="round">
                                         <path d="M5 12h14" />
                                         <path d="M12 5v14" />
                                     </svg>
@@ -75,24 +66,16 @@
 
                             <tr>
 
-                                <th
-                                    class="px-6 py-3 text-start text-xs font-medium uppercase text-gray-800"
-                                    scope="col"
-                                >No</th>
-                                <th
-                                    class="px-6 py-3 text-start text-xs font-medium uppercase text-gray-800"
-                                    scope="col"
-                                >
+                                <th class="px-6 py-3 text-start text-xs font-medium uppercase text-gray-800"
+                                    scope="col">No</th>
+                                <th class="px-6 py-3 text-start text-xs font-medium uppercase text-gray-800"
+                                    scope="col">
                                     Category name</th>
-                                <th
-                                    class="px-6 py-3 text-start text-xs font-medium uppercase text-gray-800"
-                                    scope="col"
-                                >
+                                <th class="px-6 py-3 text-start text-xs font-medium uppercase text-gray-800"
+                                    scope="col">
                                     Category description</th>
-                                <th
-                                    class="px-6 py-3 text-end text-xs font-medium uppercase text-gray-800"
-                                    scope="col"
-                                >
+                                <th class="px-6 py-3 text-end text-xs font-medium uppercase text-gray-800"
+                                    scope="col">
                                 </th>
 
                             </tr>
@@ -112,16 +95,14 @@
                                             class="inline-flex items-center gap-x-2 rounded-lg border border-transparent text-sm font-semibold text-blue-600 hover:text-blue-800 focus:text-blue-800 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                                             type="button"
                                             href="{{ route('admin.categories.edit', $category) }}"
-                                            wire:navigate="true"
-                                        >
+                                            wire:navigate="true">
                                             Edit
                                         </button>
                                         <button
                                             class="inline-flex items-center gap-x-2 rounded-lg border border-transparent text-sm font-semibold text-red-600 hover:text-red-800 focus:text-red-800 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                                             type="button"
                                             x-data
-                                            x-on:click="$dispatch('open-modal', { categoryId: '{{ $category->id }}' })"
-                                        >
+                                            x-on:click="$dispatch('open-modal', { model: 'App\\Models\\Category', modelId: '{{ $category->id }}', route:'categories'})">
                                             Delete
                                         </button>
 
