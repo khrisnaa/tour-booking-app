@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Bank\StoreBankRequest;
+use App\Http\Requests\Bank\UpdateBankRequest;
 use App\Models\Bank;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -59,15 +60,26 @@ class BankController extends Controller
      */
     public function edit(Bank $bank)
     {
-        //
+        return view('admin.banks.edit', compact('bank'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Bank $bank)
+    public function update(UpdateBankRequest $request, Bank $bank)
     {
-        //
+        DB::transaction(function () use ($request, $bank) {
+            $validated = $request->validated();
+
+            if ($request->hasFile('logo')) {
+                $logoPath = $request->file('logo')->store('bank_logos/'.date('Y/m/d'), 'public');
+                $validated['logo'] = $logoPath;
+            }
+
+            $bank->update($validated);
+        });
+
+        return redirect()->route('admin.banks.index')->with('succes', ['title' => 'Successfully update', 'description' => 'You have successfully update a tour package']);
     }
 
     /**
