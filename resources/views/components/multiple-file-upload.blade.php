@@ -1,3 +1,5 @@
+@props(['tourPackage' => null])
+
 <div>
     <div>
         <form class="max-w-sm">
@@ -18,7 +20,6 @@
             @endif
             <div class="mt-4 grid grid-cols-4 gap-4"
                 id="image-preview-container">
-
             </div>
         </div>
 
