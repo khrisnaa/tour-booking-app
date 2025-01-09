@@ -132,7 +132,7 @@
                                             class="inline-flex items-center gap-x-2 rounded-lg border border-transparent text-sm font-semibold text-red-600 hover:text-red-800 focus:text-red-800 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                                             type="button"
                                             x-data
-                                            x-on:click="$dispatch('open-modal', { model: 'App\\Models\\TourPackage', modelId: '{{ $tour->id }} ',route='package-tours'})">
+                                            x-on:click="$dispatch('open-modal', { model: 'App\\Models\\TourPackage', modelId: '{{ $tour->id }}', route:'tour-packages'})">
                                             Delete
                                         </button>
 

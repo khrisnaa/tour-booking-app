@@ -17,8 +17,8 @@
 
     <!-- Table Section -->
     <div>
-        {{-- <livewire:delete-modal title="Confirm Deletion"
-            description="Are you sure you want to delete this tour package? This action cannot be undone. All associated data will be permanently removed." /> --}}
+        <livewire:delete-modal title="Confirm Deletion"
+            description="Are you sure you want to delete this bank account? This action cannot be undone. All associated data will be permanently removed." />
 
         <livewire:bank-table />
     </div>
