@@ -15,6 +15,8 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
 
     Route::view('dashboard', 'admin.dashboard')->name('dashboard');
 
+    Route::redirect('/', '/admin/dashboard');
+
     Route::view('profile', 'admin.profile')->name('profile');
 
     Route::resource('categories', CategoryController::class);
@@ -31,4 +33,4 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
 
 });
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';
