@@ -7,13 +7,21 @@
                 class="block w-full rounded-lg border border-gray-200 text-sm shadow-sm file:me-4 file:border-0 file:bg-gray-50 file:px-4 file:py-3 focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
                 id="file-input"
                 type="file"
-                {{ $attributes }}
+                {{ $attributes->except('tourPackage') }}
                 multiple
                 onchange="previewImages(event)">
         </form>
 
-        <div class="mt-4 grid grid-cols-4 gap-4"
-            id="image-preview-container"></div>
+        <div class="flex flex-col">
+            @if ($tourPackage)
+                <livewire:delete-preview :tourPackage="$tourPackage" />
+            @endif
+            <div class="mt-4 grid grid-cols-4 gap-4"
+                id="image-preview-container">
+
+            </div>
+        </div>
+
     </div>
 
     <script>

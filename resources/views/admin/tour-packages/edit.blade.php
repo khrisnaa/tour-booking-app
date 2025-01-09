@@ -117,15 +117,10 @@
 
                         <div class="space-y-2">
                             <x-input-label for="photos"
-                                :value="__('Tour Photos')" />
-                            <livewire:delete-preview :tourPackage="$tourPackage" />
-                        </div>
-
-                        <div class="space-y-2">
-                            <x-input-label for="photos"
                                 :value="__('Add New Photos')" />
 
-                            <x-multiple-file-upload name="photos[]" />
+                            <x-multiple-file-upload name="photos[]"
+                                :tourPackage="$tourPackage" />
 
                             <x-input-error class="mt-2"
                                 :messages="$errors->get('photos')" />
