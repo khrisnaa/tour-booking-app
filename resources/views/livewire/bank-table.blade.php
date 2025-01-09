@@ -71,20 +71,20 @@
                                 </th>
                                 <th class="px-6 py-3 text-start text-xs font-medium uppercase text-gray-800"
                                     scope="col">
-                                    Icon
+                                    Logo
                                 </th>
                                 <th class="px-6 py-3 text-start text-xs font-medium uppercase text-gray-800"
                                     scope="col">
-                                    Bank Name
+                                    Bank name
                                 </th>
 
                                 <th class="whitespace-nowrap px-6 py-3 text-start text-xs font-medium uppercase text-gray-800"
                                     scope="col">
-                                    Account Name
+                                    Account name
                                 </th>
                                 <th class="whitespace-nowrap px-6 py-3 text-start text-xs font-medium uppercase text-gray-800"
                                     scope="col">
-                                    Account Number
+                                    Account number
                                 </th>
                                 <th class="px-6 py-3 text-end text-xs font-medium uppercase text-gray-800"
                                     scope="col">
@@ -95,40 +95,41 @@
 
                         <tbody class="divide-y divide-gray-200">
 
-                            {{-- @forelse ($tours as $index => $tour)
+                            @forelse ($banks as $index => $bank)
                                 <tr>
                                     <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-600">
-                                        {{ str_pad($tours->firstItem() + $index, 2, '0', STR_PAD_LEFT) }}
-                                    </td>
-                                    <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-600">
-                                        {{ $tour->name }}
-                                    </td>
-                                    <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-600">
-                                        <img class="h-10 w-10 rounded"
-                                            src="{{ Storage::url($tour->thumbnail) }}"
-                                            alt="Thumbnail" />
+                                        {{ str_pad($banks->firstItem() + $index, 2, '0', STR_PAD_LEFT) }}
                                     </td>
 
-                                    <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
-                                        {{ formatPrice($tour->price) }}
+                                    <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-600">
+                                        <img class="h-10 w-10 rounded"
+                                            src="{{ Storage::url($bank->logo) }}"
+                                            alt="Bank log" />
                                     </td>
-                                    <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
-                                        {{ formatDuration($tour->duration_days, $tour->duration_hours) }}
+
+                                    <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-600">
+                                        {{ $bank->bank_name }}
                                     </td>
-                                    <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
-                                        {{ $tour->location }}
+
+                                    <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-600">
+                                        {{ $bank->bank_account_name }}
                                     </td>
+
+                                    <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-600">
+                                        {{ $bank->bank_account_number }}
+                                    </td>
+
                                     <td class="space-x-4 whitespace-nowrap px-9 py-4 text-end text-sm font-medium">
                                         <a class="inline-flex items-center gap-x-2 rounded-lg border border-transparent text-sm font-semibold text-blue-600 hover:text-blue-800 focus:text-blue-800 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                                             type="button"
-                                            href="{{ route('admin.tour-packages.edit', $tour) }}">
+                                            href="{{ route('admin.banks.edit', $bank) }}">
                                             Edit
                                         </a>
                                         <button
                                             class="inline-flex items-center gap-x-2 rounded-lg border border-transparent text-sm font-semibold text-red-600 hover:text-red-800 focus:text-red-800 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                                             type="button"
                                             x-data
-                                            x-on:click="$dispatch('open-modal', { model: 'App\\Models\\TourPackage', modelId: '{{ $tour->id }} ',route='package-tours'})">
+                                            x-on:click="$dispatch('open-modal', { model: 'App\\Models\\Bank', modelId: '{{ $bank->id }} ',route='banks'})">
                                             Delete
                                         </button>
 
@@ -139,15 +140,15 @@
                                     <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
                                         No tour packages found</td>
                                 </tr>
-                            @endforelse --}}
+                            @endforelse
                         </tbody>
                     </table>
                     <!-- End Table -->
 
                     <!-- Footer -->
-                    {{-- <div class="h-16 border-t border-gray-200 px-6 py-4 md:flex md:items-center md:justify-end">
-                        {{ $tours->links('vendor.livewire.tailwind') }}
-                    </div> --}}
+                    <div class="h-16 border-t border-gray-200 px-6 py-4 md:flex md:items-center md:justify-end">
+                        {{ $banks->links('vendor.livewire.tailwind') }}
+                    </div>
                     <!-- End Footer -->
                 </div>
             </div>
