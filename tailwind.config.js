@@ -14,6 +14,13 @@ export default {
         extend: {
             fontFamily: {
                 sans: ["Figtree", ...defaultTheme.fontFamily.sans],
+                mont: ["Montserrat", ...defaultTheme.fontFamily.sans],
+                inter: ["Inter", ...defaultTheme.fontFamily.sans],
+            },
+            colors: {
+                black: "#1C1D28",
+                white: "#FDFCF7",
+                accent: "#5733FF",
             },
         },
     },

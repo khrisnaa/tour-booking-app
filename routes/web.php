@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
 
+Route::view('/home', 'public.home.index')->name('home');
+
+
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
 
     Route::view('dashboard', 'admin.dashboard')->name('dashboard');
