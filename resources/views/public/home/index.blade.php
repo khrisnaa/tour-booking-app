@@ -1,5 +1,5 @@
 <x-public-layout>
-    <div class="space-y-6">
+    <div class="space-y-6 pb-32">
         <div class="px-2">
             <h2 class="text-2xl font-bold">
                 Dream Travel🔆
@@ -40,7 +40,43 @@
                     <x-public.featured-tour-card />
                 @endfor
             </div>
+        </div>
+        <div>
+            <div class="space-y-8">
+                <div class="space-y-4 text-center">
+                    <h3 class="text-xl font-bold">Voices of Our Valued Clients</h3>
+                    <p class="text-sm text-gray-500">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id
+                        mollitia similique beatae,
+                        necessitatibus sapiente temporibus?</p>
+                </div>
 
+                <div class="marquee-left">
+                    <div class="marquee-content translate-x-[-100%]">
+                        @for ($i = 1; $i <= 3; $i++)
+                            <x-public.testimonials-card />
+                        @endfor
+                    </div>
+                    <div class="marquee-content translate-x-[-100%]">
+                        @for ($i = 1; $i <= 3; $i++)
+                            <x-public.testimonials-card />
+                        @endfor
+                    </div>
+                </div>
+
+                <div class="marquee-right">
+                    <div class="marquee-content translate-x-[-100%]">
+                        @for ($i = 1; $i <= 3; $i++)
+                            <x-public.testimonials-card />
+                        @endfor
+                    </div>
+                    <div class="marquee-content translate-x-[-100%]">
+                        @for ($i = 1; $i <= 3; $i++)
+                            <x-public.testimonials-card />
+                        @endfor
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
     @push('scripts')

@@ -21,3 +21,62 @@
 }
 
 /* End Text Editor */
+/* Define the scrolling animations for left and right */
+@keyframes marquee-left {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes marquee-right {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Apply the marquee animation to the container */
+.marquee-left {
+    display: inline-block;
+    white-space: nowrap;
+    animation: marquee-left 15s linear infinite;
+}
+
+.marquee-right {
+    display: inline-block;
+    white-space: nowrap;
+    animation: marquee-right 15s linear infinite;
+}
+
+.marquee-wrapper {
+    overflow: hidden;
+    position: relative;
+    width: 100%; /* Ensure the container is the full width */
+}
+
+.marquee-content {
+    display: flex;
+    gap: 1rem;
+}
+
+.marquee-left,
+.marquee-right {
+    display: flex;
+    gap: 1rem; /* Adjust the gap between items */
+}
+
+/* To prevent blinking, duplicate the content */
+.marquee-left,
+.marquee-right {
+    flex-shrink: 0;
+}
+
+.marquee-left:hover,
+.marquee-right:hover {
+    animation-play-state: paused;
+}
