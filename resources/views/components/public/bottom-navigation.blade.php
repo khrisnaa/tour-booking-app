@@ -1,4 +1,4 @@
-<div class="fixed bottom-0 left-0 w-full px-6 py-8">
+<div class="fixed bottom-0 left-0 z-50 w-full px-6 py-8">
     <div class="flex h-16 w-full items-center justify-between rounded-full bg-black p-2 px-4">
         <x-public.navigation-button :active="request()->routeIs('home')">
             <svg class="lucide lucide-house"

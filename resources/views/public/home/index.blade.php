@@ -1,5 +1,5 @@
 <x-public-layout>
-    <div class="space-y-4">
+    <div class="space-y-6">
         <div class="px-2">
             <h2 class="text-2xl font-bold">
                 Dream Travel🔆
@@ -21,17 +21,25 @@
                 <x-public.category-button :active="false">Family</x-public.category-button>
             </div>
         </div>
-        <div class="relative w-full">
+        <div class="space-y-2">
+            <h4 class="text-xl font-bold">Promotions</h4>
             <swiper-container class="mySwiper max-w-96"
                 init="false"
                 grabCursor="true"
                 loop="true">
-                <swiper-slide><x-public.featured-tour-card /></swiper-slide>
-                <swiper-slide><x-public.featured-tour-card /></swiper-slide>
-                <swiper-slide><x-public.featured-tour-card /></swiper-slide>
-                <swiper-slide><x-public.featured-tour-card /></swiper-slide>
-                <swiper-slide><x-public.featured-tour-card /></swiper-slide>
+                @for ($i = 1; $i <= 5; $i++)
+                    <swiper-slide> <x-public.promotion-card /></swiper-slide>
+                @endfor
             </swiper-container>
+
+        </div>
+        <div class="relative w-full space-y-2">
+            <h4 class="text-xl font-bold">Trip recommendations</h4>
+            <div class="space-y-4">
+                @for ($i = 1; $i <= 3; $i++)
+                    <x-public.featured-tour-card />
+                @endfor
+            </div>
 
         </div>
     </div>
