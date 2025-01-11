@@ -21,33 +21,37 @@
                 <x-public.category-button :active="false">Family</x-public.category-button>
             </div>
         </div>
-        <div class="w-full">
+        <div class="relative w-full">
+            <swiper-container class="mySwiper max-w-96"
+                init="false"
+                grabCursor="true"
+                loop="true">
+                <swiper-slide><x-public.featured-tour-card /></swiper-slide>
+                <swiper-slide><x-public.featured-tour-card /></swiper-slide>
+                <swiper-slide><x-public.featured-tour-card /></swiper-slide>
+                <swiper-slide><x-public.featured-tour-card /></swiper-slide>
+                <swiper-slide><x-public.featured-tour-card /></swiper-slide>
+            </swiper-container>
 
-            <div class="relative h-[22rem] overflow-hidden rounded-3xl">
-                <div class="img-box absolute inset-0">
-                    <img class="h-full w-full object-cover"
-                        src="{{ asset('images/image_5.jpeg') }}" />
-                </div>
-                <div
-                    class="icon-box absolute -right-1 -top-1 h-24 w-24 rounded-bl-[50%] bg-white before:absolute before:-left-5 before:top-1 before:h-5 before:w-5 before:rounded-tr-3xl before:shadow-[0.25rem_-0.25rem_0_0.25rem_white] before:content-[''] after:absolute after:-bottom-5 after:right-1 after:h-5 after:w-5 after:rounded-tr-3xl after:shadow-[0.25rem_-0.25rem_0_0.25rem_white] after:content-['']">
-                    <span
-                        class="absolute inset-3 flex items-center justify-center rounded-full bg-black text-white transition-transform hover:scale-110">
-                        <svg class="lucide lucide-heart"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path
-                                d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
-                        </svg>
-                    </span>
-                </div>
-            </div>
         </div>
     </div>
+    @push('scripts')
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+        <script>
+            var swiperEl = document.querySelector(".mySwiper");
+            Object.assign(swiperEl, {
+                effect: "creative",
+                creativeEffect: {
+                    prev: {
+                        shadow: true,
+                        translate: [0, 0, -400],
+                    },
+                    next: {
+                        translate: ["100%", 0, 0],
+                    },
+                }
+            });
+            swiperEl.initialize()
+        </script>
+    @endpush
 </x-public-layout>
