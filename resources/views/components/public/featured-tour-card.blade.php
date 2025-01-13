@@ -13,11 +13,11 @@
         </div>
 
         <div class="absolute -bottom-20 left-0 z-[3] w-full p-4 transition-all duration-500 group-hover:bottom-20">
-            <div class="mb-4 px-4 text-white">
+            <div class="mb-6 px-4 text-white">
                 <p class="text-sm text-white/70">Uluwatu, Badung</p>
                 <h3 class="text-lg">Green Bowl Beach</h3>
                 <div
-                    class="inline-flex items-center gap-x-1.5 rounded-full border border-gray-200 px-3 py-1.5 text-sm font-medium text-white shadow-sm">
+                    class="mt-2 inline-flex items-center gap-x-1.5 rounded-full border border-gray-200 px-3 py-1.5 text-sm font-medium text-white shadow-sm">
                     <svg class="lucide lucide-star"
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"

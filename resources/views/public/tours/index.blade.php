@@ -1,5 +1,5 @@
 <x-public-layout>
-    <div class="space-y-8">
+    <div class="space-y-8 p-6">
         <div>
             <x-public.search-box />
         </div>

@@ -27,13 +27,15 @@
         @stack('styles')
     </head>
 
-    <body class="min-h-screen bg-white px-6 py-6 font-inter text-black antialiased">
+    <body class="{{-- px-6 py-6 --}} min-h-screen bg-white font-inter text-black antialiased">
         <main class="overflow-x-hidden pb-24">
             {{ $slot }}
             <x-public.footer />
         </main>
 
-        <x-public.bottom-navigation />
+        @if (!request()->routeIs('tour.detailsx*'))
+            <x-public.bottom-navigation />
+        @endif
 
         @stack('scripts')
     </body>

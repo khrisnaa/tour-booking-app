@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
 
+Route::view('/details', 'public.tours.details')->name('tour.detailsx');
+
 Route::get('/home', [ClientController::class, 'home'])->name('home');
 
 Route::get('/tours', [ClientController::class, 'tours'])->name('tours');
