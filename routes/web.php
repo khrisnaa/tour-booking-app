@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'welcome');
 
 Route::view('/home', 'public.home.index')->name('home');
-Route::view('/tours', 'public.home.index')->name('tours');
+Route::view('/tours', 'public.tours.index')->name('tours');
 Route::view('/favorites', 'public.home.index')->name('favorites');
 Route::view('/more', 'public.home.index')->name('more');
 
