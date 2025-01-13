@@ -1,6 +1,6 @@
 <div class="fixed bottom-0 left-0 z-50 w-full px-6 py-2">
     <div class="flex h-16 w-full items-center justify-between rounded-full bg-black p-2 px-4">
-        <x-public.navigation-button :active="request()->routeIs('home')">
+        <x-public.navigation-button route="home">
             <svg class="lucide lucide-house"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -17,7 +17,7 @@
             </svg>
         </x-public.navigation-button>
 
-        <x-public.navigation-button :active="request()->routeIs('admin.tour-packages*')">
+        <x-public.navigation-button route="tours">
             <svg class="lucide lucide-map"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -35,7 +35,7 @@
             </svg>
         </x-public.navigation-button>
 
-        <x-public.navigation-button :active="request()->routeIs('admin.tour-packages*')">
+        <x-public.navigation-button route="favorites">
             <svg class="lucide lucide-heart"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -51,7 +51,7 @@
             </svg>
         </x-public.navigation-button>
 
-        <x-public.navigation-button :active="request()->routeIs('admin.tour-packages*')">
+        <x-public.navigation-button route="more">
             <svg class="lucide lucide-align-justify"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"

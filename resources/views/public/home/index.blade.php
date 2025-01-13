@@ -1,18 +1,18 @@
 <x-public-layout>
-    <div class="space-y-6">
+    <div class="space-y-8">
         <div class="px-2">
             <h2 class="text-2xl font-bold">
-                Dream Travel🔆
+                Your Great Escape!🔆
             </h2>
-            <h3 class="text-gray-500">
-                From beaches to peaks!
+            <h3 class="text-gray-600">
+                From Beaches to Peaks, Your Next Adventure Starts Here!
             </h3>
         </div>
         <div>
             <x-public.search-box />
         </div>
-        <div class="space-y-2 overflow-hidden">
-            <h4 class="text-xl font-bold">Where to next?</h4>
+        <div class="space-y-4 overflow-hidden">
+            <h4 class="text-2xl font-bold">Where to next?</h4>
             <div class="flex gap-2">
                 <x-public.category-button :active="false">Beaches</x-public.category-button>
                 <x-public.category-button :active="true">Cultural</x-public.category-button>
@@ -21,8 +21,8 @@
                 <x-public.category-button :active="false">Family</x-public.category-button>
             </div>
         </div>
-        <div class="space-y-2">
-            <h4 class="text-xl font-bold">Promotions</h4>
+        <div class="space-y-4">
+            <h4 class="text-2xl font-bold">Best Deals!</h4>
             <swiper-container class="mySwiper max-w-96"
                 init="false"
                 grabCursor="true"
@@ -33,8 +33,8 @@
             </swiper-container>
 
         </div>
-        <div class="relative w-full space-y-2">
-            <h4 class="text-xl font-bold">Trip recommendations</h4>
+        <div class="relative w-full space-y-4">
+            <h4 class="text-2xl font-bold">Our Recommendations</h4>
             <div class="space-y-4">
                 @for ($i = 1; $i <= 3; $i++)
                     <x-public.featured-tour-card />
@@ -43,11 +43,9 @@
         </div>
         <div>
             <div class="space-y-8">
-                <div class="space-y-4 text-center">
-                    <h3 class="text-xl font-bold">Voices of Our Valued Clients</h3>
-                    <p class="text-sm text-gray-500">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id
-                        mollitia similique beatae,
-                        necessitatibus sapiente temporibus?</p>
+                <div class="space-y-1 text-center">
+                    <h3 class="text-2xl font-bold">Voices of Our Valued Clients</h3>
+                    <p class="text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                 </div>
 
                 <div class="marquee-left">

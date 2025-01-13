@@ -66,6 +66,6 @@
 
     </div>
     <div class="absolute right-2 top-2 z-[3] h-16 w-16 rounded-full">
-        <livewire:like-button :isActive="true" />
+        <livewire:like-button :isActive="false" />
     </div>
 </div>
