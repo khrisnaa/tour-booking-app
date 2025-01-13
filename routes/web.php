@@ -13,7 +13,7 @@ Route::view('/', 'welcome');
 
 Route::view('/home', 'public.home.index')->name('home');
 Route::view('/tours', 'public.tours.index')->name('tours');
-Route::view('/favorites', 'public.home.index')->name('favorites');
+Route::view('/favorites', 'public.favorites.index')->name('favorites');
 Route::view('/more', 'public.home.index')->name('more');
 
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
