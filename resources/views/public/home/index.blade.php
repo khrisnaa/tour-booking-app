@@ -1,5 +1,5 @@
 <x-public-layout>
-    <div class="space-y-6 pb-32">
+    <div class="space-y-6">
         <div class="px-2">
             <h2 class="text-2xl font-bold">
                 Dream Travel🔆
@@ -77,6 +77,9 @@
                 </div>
 
             </div>
+        </div>
+        <div>
+            <x-public.faqs-section />
         </div>
     </div>
     @push('scripts')

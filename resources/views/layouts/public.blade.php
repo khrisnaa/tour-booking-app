@@ -28,10 +28,13 @@
     </head>
 
     <body class="min-h-screen bg-white px-6 py-6 font-inter text-black antialiased">
-        <main>
+        <main class="overflow-x-hidden pb-24">
             {{ $slot }}
+            <x-public.footer />
         </main>
+
         <x-public.bottom-navigation />
+
         @stack('scripts')
     </body>
 
