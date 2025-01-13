@@ -3,6 +3,7 @@
 use App\Http\Controllers\BankController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\TourPackageController;
@@ -11,10 +12,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
 
-Route::view('/home', 'public.home.index')->name('home');
-Route::view('/tours', 'public.tours.index')->name('tours');
-Route::view('/favorites', 'public.favorites.index')->name('favorites');
-Route::view('/more', 'public.home.index')->name('more');
+Route::get('/home', [ClientController::class, 'home'])->name('home');
+
+Route::get('/tours', [ClientController::class, 'tours'])->name('tours');
+
+Route::get('/tours/{tour:slug}', [ClientController::class, 'details'])->name('tour.details');
+
+Route::get('/favorites', [ClientController::class, 'favorites'])->name('favorites');
+
+Route::get('/more', [ClientController::class, 'tours'])->name('more');
 
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
 
