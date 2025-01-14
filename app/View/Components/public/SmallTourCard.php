@@ -2,18 +2,19 @@
 
 namespace App\View\Components\public;
 
+use App\Models\TourPackage;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
 class SmallTourCard extends Component
 {
-    /**
-     * Create a new component instance.
-     */
-    public function __construct()
+
+    public $tourId = '';
+
+    public function __construct($tourId)
     {
-        //
+        $this->tourId = $tourId;
     }
 
     /**
@@ -21,6 +22,7 @@ class SmallTourCard extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.public.small-tour-card');
+        $tour = TourPackage::findOrFail($this->tourId);
+        return view('components.public.small-tour-card', compact('tour'));
     }
 }

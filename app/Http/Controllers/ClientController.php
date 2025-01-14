@@ -13,7 +13,8 @@ class ClientController extends Controller
     public function home()
     {
         $tours = TourPackage::orderByDesc('created_at')->get();
-        return view('public.home.index', compact('tours'));
+        $promoTours = TourPackage::orderBy('created_at')->get();
+        return view('public.home.index', compact('tours', 'promoTours'));
     }
 
     public function tours()

@@ -105,7 +105,7 @@
                     <h4 class="text-xl font-semibold">Other Like This</h4>
                     <div class="flex gap-4">
                         @foreach ($relatedTours as $relatedTour)
-                            <x-public.small-tour-card />
+                            <x-public.small-tour-card tourId="{{ $relatedTour->id }}" />
                         @endforeach
 
                     </div>

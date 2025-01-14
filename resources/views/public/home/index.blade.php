@@ -42,9 +42,9 @@
                 init="false"
                 grabCursor="true"
                 loop="true">
-                @for ($i = 1; $i <= 5; $i++)
-                    <swiper-slide> <x-public.small-tour-card /></swiper-slide>
-                @endfor
+                @foreach ($promoTours as $promoTour)
+                    <swiper-slide> <x-public.small-tour-card tourId="{{ $promoTour->id }}" /></swiper-slide>
+                @endforeach
             </swiper-container>
 
         </div>
