@@ -33,7 +33,7 @@
             <x-public.footer />
         </main>
 
-        @if (!request()->routeIs('tour.detailsx*'))
+        @if (!request()->routeIs('tour.details*'))
             <x-public.bottom-navigation />
         @endif
 

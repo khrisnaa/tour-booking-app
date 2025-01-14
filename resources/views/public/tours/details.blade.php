@@ -1,10 +1,10 @@
 <x-public-layout>
-    <div>
+    <div role="tablist">
         <div class="relative h-[40vh] w-full">
 
-            <button
-                class="absolute left-4 top-4 z-[3] flex size-[46px] shrink-0 items-center justify-center gap-2 rounded-full border border-transparent bg-white text-sm font-medium text-black focus:outline-none disabled:pointer-events-none disabled:opacity-50"
-                type="button">
+            <a class="absolute left-4 top-4 z-[3] flex size-[46px] shrink-0 items-center justify-center gap-2 rounded-full border border-transparent bg-white text-sm font-medium text-black focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                type="button"
+                href="javascript:history.back()">
                 <svg class="lucide lucide-chevron-left"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -17,37 +17,47 @@
                     stroke-linejoin="round">
                     <path d="m15 18-6-6 6-6" />
                 </svg>
-            </button>
+            </a>
+            <img class="active z-[2] h-full w-full scale-110 object-cover transition-transform duration-500 group-hover:scale-100"
+                id="tabs-with-underline-thumbnail"
+                src="{{ Storage::url($tour->thumbnail) }}"
+                role="tabpanel" />
 
-            <img class="z-[2] h-full w-full scale-110 object-cover transition-transform duration-500 group-hover:scale-100"
-                src="{{ asset('images/image_7.jpeg') }}" />
+            @foreach ($photos as $index => $photo)
+                <img class="z-[2] hidden h-full w-full scale-110 object-cover transition-transform duration-500 group-hover:scale-100"
+                    id="tabs-with-underline-{{ $index }}"
+                    src="{{ Storage::url($photo->photo) }}"
+                    role="tabpanel" />
+            @endforeach
+
         </div>
         <div class="-translate-y-5 space-y-8 rounded-t-3xl bg-white">
-            <div class="flex w-full justify-center gap-4 p-4 px-8">
-                <div class="relative h-16 w-16 overflow-hidden rounded-md">
+            <div class="flex w-full justify-center gap-4 p-4 px-8"
+                role="tablist">
+                <button class="active relative aspect-square size-16 min-w-16 overflow-hidden rounded-md"
+                    data-hs-tab="#tabs-with-underline-thumbnail"
+                    type="button"
+                    role="tab">
                     <img class="h-full w-full scale-110 object-cover transition-transform duration-500 group-hover:scale-100"
-                        src="{{ asset('images/image_7.jpeg') }}" />
-                    <div class="absolute inset-0 hidden bg-black/50"></div>
-                </div>
-                <div class="relative h-16 w-16 overflow-hidden rounded-md">
-                    <img class="h-full w-full scale-110 object-cover transition-transform duration-500 group-hover:scale-100"
-                        src="{{ asset('images/image_7.jpeg') }}" />
-                </div>
-                <div class="relative h-16 w-16 overflow-hidden rounded-md">
-                    <img class="h-full w-full scale-110 object-cover transition-transform duration-500 group-hover:scale-100"
-                        src="{{ asset('images/image_7.jpeg') }}" />
-                </div>
-                <div class="relative h-16 w-16 overflow-hidden rounded-md">
-                    <img class="h-full w-full scale-110 object-cover transition-transform duration-500 group-hover:scale-100"
-                        src="{{ asset('images/image_7.jpeg') }}" />
-                </div>
+                        src="{{ Storage::url($tour->thumbnail) }}" />
+                </button>
+                @foreach ($photos as $index => $photo)
+                    <button class="relative aspect-square size-16 min-w-16 overflow-hidden rounded-md"
+                        data-hs-tab="#tabs-with-underline-{{ $index }}"
+                        type="button"
+                        role="tab">
+                        <img class="h-full w-full scale-110 object-cover transition-transform duration-500 group-hover:scale-100"
+                            src="{{ Storage::url($photo->photo) }}" />
+                    </button>
+                @endforeach
+
             </div>
 
             <div class="space-y-8">
 
                 <div class="flex items-start justify-between px-6">
-                    <div>
-                        <h4 class="text-2xl font-bold">Green Bowl Beach</h4>
+                    <div class="space-y-2">
+                        <h4 class="text-2xl font-bold">{{ $tour->name }}</h4>
                         <p class="flex items-center gap-1 text-black"><span>
                                 <svg class="lucide lucide-map-pin"
                                     xmlns="http://www.w3.org/2000/svg"
@@ -64,9 +74,9 @@
                                     <circle cx="12"
                                         cy="10"
                                         r="3" />
-                                </svg></span>Nusa Dua, Bali</p>
+                                </svg></span>{{ $tour->location }}</p>
                     </div>
-                    <div>
+                    <div class="space-y-2">
                         <div
                             class="inline-flex items-center gap-x-1.5 rounded-full border border-gray-600 px-3 py-1.5 text-sm font-medium text-black shadow-sm">
                             <svg class="lucide lucide-star"
@@ -88,15 +98,16 @@
                 </div>
 
                 <div class="px-6">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis voluptatem placeat sapiente
-                        repellat accusamus rerum aperiam tempora aut quis autem?</p>
+                    <p>{{ strip_tags($tour->description) }}</p>
                 </div>
 
                 <div class="space-y-2 px-6">
                     <h4 class="text-xl font-semibold">Other Like This</h4>
                     <div class="flex gap-4">
-                        <x-public.small-tour-card />
-                        <x-public.small-tour-card />
+                        @foreach ($relatedTours as $relatedTour)
+                            <x-public.small-tour-card />
+                        @endforeach
+
                     </div>
                 </div>
             </div>
@@ -107,7 +118,9 @@
         <div class="flex h-20 w-full items-center justify-between bg-black p-2 px-4 text-white">
             <div>
                 <p>Price</p>
-                <h4 class="text-lg font-bold">IDR 300.000 <span class="text-base font-normal">/person</span></h4>
+                <h4 class="text-lg font-bold">{{ formatPrice($tour->price) }} <span
+                        class="text-base font-normal">/person</span>
+                </h4>
             </div>
             <button
                 class="inline-flex items-center gap-x-2 rounded-full border border-gray-200 bg-white px-4 py-3 text-sm font-medium text-gray-800 shadow-sm hover:bg-gray-50 focus:bg-gray-50 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
