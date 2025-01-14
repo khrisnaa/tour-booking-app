@@ -37,18 +37,25 @@
 
         <div class="space-y-2">
             <h4 class="text-xl font-semibold">Best Deals Today!</h4>
-            <div class="flex gap-4 overflow-hidden">
-                <x-public.small-tour-card />
-                <x-public.small-tour-card />
-            </div>
+
+            <swiper-container class="mySwiper max-w-96"
+                init="false"
+                grabCursor="true"
+                loop="true">
+                @for ($i = 1; $i <= 5; $i++)
+                    <swiper-slide> <x-public.small-tour-card /></swiper-slide>
+                @endfor
+            </swiper-container>
+
         </div>
 
         <div class="relative w-full space-y-2">
             <h4 class="text-xl font-semibold">Top Recommendations</h4>
             <div class="space-y-4">
-                @for ($i = 1; $i <= 3; $i++)
-                    <x-public.featured-tour-card />
-                @endfor
+                @foreach ($tours as $tour)
+                    <x-public.featured-tour-card tourId="{{ $tour->id }}" />
+                @endforeach
+
             </div>
         </div>
         <div>
@@ -95,18 +102,18 @@
         <script>
             var swiperEl = document.querySelector(".mySwiper");
             Object.assign(swiperEl, {
-                effect: "creative",
-                creativeEffect: {
-                    prev: {
-                        shadow: true,
-                        translate: [0, 0, -400],
-                    },
-                    next: {
-                        translate: ["100%", 0, 0],
-                    },
-                }
+                slidesPerView: 1.5,
+                spaceBetween: 20,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev'
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true
+                },
             });
-            swiperEl.initialize()
+            swiperEl.initialize();
         </script>
     @endpush
 </x-public-layout>
