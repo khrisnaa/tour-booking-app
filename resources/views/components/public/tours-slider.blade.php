@@ -1,14 +1,15 @@
-<div class="relative w-full space-y-4">
-    <h4 class="text-2xl font-bold">Beaches</h4>
+<div class="{{ $tours->isEmpty() ? 'hidden' : '' }} relative w-full space-y-4">
+
+    <h4 class="text-2xl font-bold">{{ $category->name }}</h4>
     <swiper-container class="mySwiper relative max-w-96"
         id="{{ $id }}"
         init="false"
         grabCursor="true"
         loop="true">
 
-        @for ($i = 1; $i <= 5; $i++)
-            <swiper-slide> <x-public.tour-card /></swiper-slide>
-        @endfor
+        @foreach ($tours as $tour)
+            <swiper-slide> <x-public.tour-card tourId="{{ $tour->id }}" /></swiper-slide>
+        @endforeach
 
         <div class="absolute left-0 top-1/2 z-50 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded-full text-white"
             id="swiper-button-prev{{ $id }}">
