@@ -46,23 +46,25 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
     <script>
-        var swiperEl = document.querySelector("#{{ $id }}");
-        Object.assign(swiperEl, {
-            effect: "creative",
-            creativeEffect: {
-                prev: {
-                    shadow: true,
-                    translate: [0, 0, -400],
+        document.addEventListener("DOMContentLoaded", function() {
+            var swiperEl = document.querySelector("#{{ $id }}");
+            Object.assign(swiperEl, {
+                effect: "creative",
+                creativeEffect: {
+                    prev: {
+                        shadow: true,
+                        translate: [0, 0, -400],
+                    },
+                    next: {
+                        translate: ["100%", 0, 0],
+                    },
                 },
-                next: {
-                    translate: ["100%", 0, 0],
-                },
-            },
-            navigation: {
-                nextEl: ".swiper-button-next-{{ $id }}",
-                prevEl: ".swiper-button-prev-{{ $id }}",
-            }
+                navigation: {
+                    nextEl: ".swiper-button-next-{{ $id }}",
+                    prevEl: ".swiper-button-prev-{{ $id }}",
+                }
+            });
+            swiperEl.initialize();
         });
-        swiperEl.initialize()
     </script>
 </div>

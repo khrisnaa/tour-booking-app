@@ -2,9 +2,7 @@
     <div class="relative flex h-16 items-center justify-center">
         <input
             class="block h-full w-full rounded-full border-gray-300 py-3 ps-12 shadow-sm focus:z-10 focus:border-black focus:ring-black disabled:pointer-events-none disabled:opacity-50"
-            id="hs-leading-icon"
-            name="hs-leading-icon"
-            type="text"
+            {{ $attributes }}
             placeholder="Where we can take you?">
         <div class="pointer-events-none absolute inset-y-0 start-0 z-20 flex items-center ps-4 text-gray-500">
             <svg class="lucide lucide-search text-current"

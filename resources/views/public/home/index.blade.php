@@ -8,20 +8,10 @@
                 From Beaches to Peaks, Your Next Adventure Starts Here!
             </h3>
         </div>
-        <div>
-            <x-public.search-box />
-        </div>
-        <div class="space-y-4 overflow-hidden">
-            <h4 class="text-2xl font-semibold">Where to next?</h4>
-            <div class="flex gap-2">
-                <x-public.category-button :active="false">Beaches</x-public.category-button>
-                <x-public.category-button :active="true">Cultural</x-public.category-button>
-                <x-public.category-button :active="false">Nature</x-public.category-button>
-                <x-public.category-button :active="false">Nightlife</x-public.category-button>
-                <x-public.category-button :active="false">Family</x-public.category-button>
-            </div>
-        </div>
-
+        <x-public.filter-box />
+        {{-- <x-public.search-box id="searchInput"
+            placeholder="Search tours..."
+            autocomplete="off" /> --}}
         <div class="space-y-4">
             {{-- <h4 class="text-2xl font-semibold">Best Deals!</h4> --}}
             {{-- <swiper-container class="mySwiper max-w-96"

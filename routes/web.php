@@ -18,6 +18,8 @@ Route::get('/home', [ClientController::class, 'home'])->name('home');
 
 Route::get('/tours', [ClientController::class, 'tours'])->name('tours');
 
+Route::get('/category/{category:slug}', [ClientController::class, 'category'])->name('category');
+
 Route::get('/tours/{tour:slug}', [ClientController::class, 'details'])->name('tour.details');
 
 Route::get('/favorites', [ClientController::class, 'favorites'])->name('favorites');

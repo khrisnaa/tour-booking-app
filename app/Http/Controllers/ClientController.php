@@ -17,14 +17,38 @@ class ClientController extends Controller
         return view('public.home.index', compact('tours', 'promoTours'));
     }
 
-    public function tours()
+    public function tours(Request $request)
     {
-        return view('public.tours.index');
+        $search = $request->input('search');
+
+        // Fetch categories
+        $categories = Category::take(2)->get();
+
+        // If search exists, filter tours based on search query
+        $tours = collect(); // Initialize with an empty collection
+        if ($search) {
+            $tours = TourPackage::where('name', 'like', '%'.$search.'%')->get();
+        }
+
+        // Return view with tours and categories
+        return view('public.tours.index', compact('tours', 'categories', 'search'));
     }
 
     public function favorites()
     {
         return view('public.favorites.index');
+    }
+
+    public function category(Request $request, $slug)
+    {
+        $category = Category::where('slug', $slug)->firstOrFail();
+        $search = $request->input('search');
+
+        // Apply filter to tour packages if search query is present
+        $tours = $category->tourPackages()
+            ->where('name', 'like', '%'.$search.'%') // Assuming 'name' is the column for tour name
+            ->get();
+        return view('public.category.index', compact('tours', 'category'));
     }
 
     public function details(TourPackage $tour)
