@@ -4,7 +4,7 @@ use App\Models\User;
 use Livewire\Volt\Volt;
 
 test('login screen can be rendered', function () {
-    $response = $this->get('/login');
+    $response = $this->get('/admin');
 
     $response
         ->assertOk()
@@ -22,7 +22,7 @@ test('users can authenticate using the login screen', function () {
 
     $component
         ->assertHasNoErrors()
-        ->assertRedirect(route('dashboard', absolute: false));
+        ->assertRedirect(route('admin.dashboard', absolute: false));
 
     $this->assertAuthenticated();
 });
@@ -48,7 +48,7 @@ test('navigation menu can be rendered', function () {
 
     $this->actingAs($user);
 
-    $response = $this->get('/dashboard');
+    $response = $this->get('/admin/dashboard');
 
     $response
         ->assertOk()
